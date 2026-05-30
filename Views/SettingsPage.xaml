@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodieTracker.Views.SettingsPage"
+             Title="Settings">
+    <VerticalStackLayout Padding="20" Spacing="20">
+        <Label Text="Accessibility &amp; Appearance" FontSize="22" FontAttributes="Bold"/>
+        <Picker x:Name="ThemePicker" Title="App Theme" SelectedIndexChanged="OnThemeChanged">
+            <Picker.Items>
+                <x:String>System default</x:String>
+                <x:String>Light</x:String>
+                <x:String>Dark</x:String>
+            </Picker.Items>
+        </Picker>
+        <Grid ColumnDefinitions="*,Auto">
+            <Label Text="Large Text Mode" VerticalOptions="Center"/>
+            <Switch x:Name="LargeTextSwitch" Toggled="OnLargeTextToggled"/>
+        </Grid>
+        <Label x:Name="PreviewLabel" Text="This text will scale when large mode is on." FontSize="16"/>
+        <Label x:Name="StatusLabel" TextColor="Gray"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodieTracker.Views.HardwareDemoPage"
+             Title="Hardware">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Mobile Hardware Demo" FontSize="24" FontAttributes="Bold"/>
+            <Button Text="📷 Take Photo" Clicked="OnPhotoClicked"/>
+            <Image x:Name="PhotoPreview" HeightRequest="180" Aspect="AspectFill"/>
+            <Button Text="📍 Get Location" Clicked="OnLocationClicked"/>
+            <Label x:Name="LocationText"/>
+            <Button Text="🔊 Read Help" Clicked="OnReadHelpClicked"/>
+            <Button Text="🤚 Haptic + Vibrate" Clicked="OnHapticClicked"/>
+            <Button Text="🎲 Shake to Recommend" Clicked="OnShakeDemoClicked" BackgroundColor="Orange"/>
+            <Label x:Name="ShakeResultLabel" FontAttributes="Bold"/>
+            <Label x:Name="StatusLabel" TextColor="Gray"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

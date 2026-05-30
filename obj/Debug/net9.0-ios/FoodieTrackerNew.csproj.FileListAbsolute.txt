@@ -1,0 +1,9 @@
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\build-signature\signature
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\actool\_PartialAppManifest.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\actool\_BundleResourceWithLogicalName.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\actool\_ProcessedImageAssetsPath.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\coremlc\_PartialAppManifest.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\coremlc\_BundleResourceWithLogicalName.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\coremlc\_ProcessedCoreMLModelsPath.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\_ProcessedBundleResourcesPath.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-ios\_ProcessedContentPath.items

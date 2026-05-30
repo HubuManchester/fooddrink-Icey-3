@@ -1,0 +1,8 @@
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\actool\_PartialAppManifest.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\actool\_BundleResourceWithLogicalName.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\actool\_ProcessedImageAssetsPath.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\coremlc\_PartialAppManifest.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\coremlc\_BundleResourceWithLogicalName.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\coremlc\_ProcessedCoreMLModelsPath.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\_ProcessedBundleResourcesPath.items
+D:\MDT\FoodieTrackerNew\obj\Debug\net9.0-maccatalyst\_ProcessedContentPath.items

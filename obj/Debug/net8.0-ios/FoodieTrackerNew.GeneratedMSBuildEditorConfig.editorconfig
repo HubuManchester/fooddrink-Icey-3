@@ -1,0 +1,69 @@
+is_global = true
+build_property.TargetFramework = net8.0-ios
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FoodieTracker
+build_property.ProjectDir = D:\MDT\FoodDrink\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/MDT/FoodDrink/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[D:/MDT/FoodDrink/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[D:/MDT/FoodDrink/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[D:/MDT/FoodDrink/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[D:/MDT/FoodDrink/Views/AddEntryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.AddEntryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddEntryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddEntryPage.xaml
+
+[D:/MDT/FoodDrink/Views/DetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.DetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DetailPage.xaml
+
+[D:/MDT/FoodDrink/Views/HardwareDemoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.HardwareDemoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\HardwareDemoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\HardwareDemoPage.xaml
+
+[D:/MDT/FoodDrink/Views/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MainPage.xaml
+
+[D:/MDT/FoodDrink/Views/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SettingsPage.xaml

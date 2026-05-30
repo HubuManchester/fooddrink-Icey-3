@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodieTracker.Views.DetailPage"
+             Title="Details">
+    <VerticalStackLayout Padding="20" Spacing="16">
+        <Label x:Name="NameLabel" FontSize="28" FontAttributes="Bold"/>
+        <Label x:Name="CatLabel" TextColor="Gray"/>
+        <Label x:Name="CalLabel" FontSize="22" FontAttributes="Bold" TextColor="Green"/>
+        <Label x:Name="MacroLabel" FontSize="16"/>
+        <Label x:Name="DescLabel" FontSize="15"/>
+        <Label x:Name="AllergyLabel" FontSize="14" FontAttributes="Italic"/>
+        <Button Text="🔊 Read" Clicked="OnSpeakClicked"/>
+        <Button Text="🔇 STOP" Clicked="OnStopClicked"/>
+        <Button Text="📳 Vibrate Reminder" Clicked="OnVibrateClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
