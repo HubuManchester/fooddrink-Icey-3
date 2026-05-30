@@ -1,27 +1,5 @@
-# Visual Studio / .NET
-.vs/
-.dotnet-home/
-bin/
-obj/
-**/bin/
-**/obj/
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
 
-# MAUI / Android build outputs
-*.apk
-*.aab
-*.idsig
-*.keystore
-*.pdb
-FoodDrinkApp_GitHub_Upload.zip
-
-# User-specific files
-*.user
-*.suo
-*.rsuser
-
-# OS files
-Thumbs.db
-Desktop.ini
-
-# Local build redirection output is configured outside the repo:
-# C:\MauiBuild\FoodDrinkApp
+/.vs
