@@ -5,7 +5,7 @@ namespace FoodieTracker.Models;
 public class FoodEntry
 {
     [JsonPropertyName("id")]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = string.Empty;
 
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
@@ -31,7 +31,13 @@ public class FoodEntry
     [JsonPropertyName("allergyInfo")]
     public string AllergyInfo { get; set; } = "None";
 
+    // 以下计算属性不参与序列化
+    [JsonIgnore]
     public string CaloriesLabel => $"{Calories} kcal";
+
+    [JsonIgnore]
     public string MacroSummary => $"P {Protein}g / C {Carbs}g / F {Fat}g";
+
+    [JsonIgnore]
     public string AccessibleSummary => $"{Name}, {Category}, {Calories} calories, {MacroSummary}, Allergy: {AllergyInfo}";
 }

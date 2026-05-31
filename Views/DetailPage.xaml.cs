@@ -2,8 +2,6 @@
 using FoodieTracker.Services;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
-using System;
-using System.Xml;
 
 namespace FoodieTracker.Views;
 
@@ -32,6 +30,33 @@ public partial class DetailPage : ContentPage
         if (_entry != null)
             await SpeechService.SpeakAsync(_entry.AccessibleSummary);
     }
+
     private void OnStopClicked(object sender, EventArgs e) => SpeechService.Stop();
+
+    private async void OnEditClicked(object sender, EventArgs e)
+    {
+        if (_entry != null)
+            await Shell.Current.GoToAsync($"{nameof(EditEntryPage)}?id={_entry.Id}");
+    }
+
+    private async void OnDeleteClicked(object sender, EventArgs e)
+    {
+        if (_entry == null) return;
+        bool confirm = await DisplayAlert("Delete", $"Delete '{_entry.Name}'?", "Yes", "No");
+        if (confirm)
+        {
+            try
+            {
+                await FoodDataService.DeleteAsync(_entry.Id);
+                await DisplayAlert("Deleted", "Item removed.", "OK");
+                await Shell.Current.GoToAsync(".."); // 返回列表页
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+            }
+        }
+    }
+
     private void OnVibrateClicked(object sender, EventArgs e) => Vibration.Default.Vibrate(500);
 }

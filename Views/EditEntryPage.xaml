@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodieTracker.Views.EditEntryPage"
+             Title="Edit Entry">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Entry x:Name="NameEntry" Placeholder="Name" />
+            <Picker x:Name="CategoryPicker" Title="Category">
+                <Picker.Items>
+                    <x:String>Breakfast</x:String>
+                    <x:String>Lunch</x:String>
+                    <x:String>Dinner</x:String>
+                    <x:String>Snack</x:String>
+                    <x:String>Drink</x:String>
+                </Picker.Items>
+            </Picker>
+            <Editor x:Name="DescEditor" Placeholder="Description" AutoSize="TextChanges" HeightRequest="80"/>
+            <Entry x:Name="CalEntry" Placeholder="Calories" Keyboard="Numeric"/>
+            <Entry x:Name="ProteinEntry" Placeholder="Protein (g)" Keyboard="Numeric"/>
+            <Entry x:Name="CarbsEntry" Placeholder="Carbs (g)" Keyboard="Numeric"/>
+            <Entry x:Name="FatEntry" Placeholder="Fat (g)" Keyboard="Numeric"/>
+            <Entry x:Name="AllergyEntry" Placeholder="Allergy info"/>
+            <Label x:Name="ErrorLabel" IsVisible="False" TextColor="Red" FontAttributes="Bold"/>
+            <Button Text="Save Changes" Clicked="OnSaveClicked" BackgroundColor="#2F7A4F" TextColor="White"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

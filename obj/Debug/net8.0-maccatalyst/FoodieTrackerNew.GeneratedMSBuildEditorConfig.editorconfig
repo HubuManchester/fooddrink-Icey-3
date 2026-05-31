@@ -50,6 +50,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.Detail
 build_metadata.AdditionalFiles.TargetPath = Views\DetailPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\DetailPage.xaml
 
+[D:/MDT/FoodDrink/Views/EditEntryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.EditEntryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\EditEntryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\EditEntryPage.xaml
+
 [D:/MDT/FoodDrink/Views/HardwareDemoPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FoodieTracker.Views.HardwareDemoPage.xaml
