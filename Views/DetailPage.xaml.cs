@@ -1,6 +1,5 @@
 ﻿using FoodieTracker.Models;
 using FoodieTracker.Services;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
 
 namespace FoodieTracker.Views;
@@ -11,7 +10,20 @@ public partial class DetailPage : ContentPage
     private FoodEntry? _entry;
     public string ItemId { set => LoadEntry(value); }
 
-    public DetailPage() => InitializeComponent();
+    public DetailPage()
+    {
+        InitializeComponent();
+        AccessibilityService.LargeTextChanged += OnLargeTextChanged;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        AccessibilityService.ApplyFontScale(this);
+    }
+
+    private void OnLargeTextChanged(object? sender, EventArgs e) =>
+        AccessibilityService.ApplyFontScale(this);
 
     private async void LoadEntry(string id)
     {
@@ -45,16 +57,14 @@ public partial class DetailPage : ContentPage
         bool confirm = await DisplayAlert("Delete", $"Delete '{_entry.Name}'?", "Yes", "No");
         if (confirm)
         {
-            try
+            bool success = await FoodDataService.DeleteAsync(_entry.Id);
+            if (success)
             {
-                await FoodDataService.DeleteAsync(_entry.Id);
                 await DisplayAlert("Deleted", "Item removed.", "OK");
-                await Shell.Current.GoToAsync(".."); // 返回列表页
+                await Shell.Current.GoToAsync("..");
             }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "OK");
-            }
+            else
+                await DisplayAlert("Error", "Delete failed.", "OK");
         }
     }
 

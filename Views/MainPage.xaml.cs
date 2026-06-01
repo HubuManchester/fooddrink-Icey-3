@@ -8,12 +8,40 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        AccessibilityService.LargeTextChanged += OnLargeTextChanged;
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
         await LoadFoodItemsAsync(SearchBar.Text);
+        AccessibilityService.ApplyFontScale(this);
+    }
+
+    private async void OnLargeTextChanged(object? sender, EventArgs e)
+    {
+        await LoadFoodItemsAsync(SearchBar.Text);
+        AccessibilityService.ApplyFontScale(this);
+    }
+
+    // 下拉刷新事件处理
+    private async void OnRefreshViewRefreshing(object? sender, EventArgs e)
+    {
+        try
+        {
+            // 强制从服务器获取最新数据，更新缓存
+            await FoodDataService.RefreshCacheAsync();
+            // 重新加载列表
+            await LoadFoodItemsAsync(SearchBar.Text);
+            // 可选：显示提示信息
+            SemanticScreenReader.Announce("List refreshed with latest data");
+        }
+        finally
+        {
+            // 结束刷新动画
+            if (sender is RefreshView refreshView)
+                refreshView.IsRefreshing = false;
+        }
     }
 
     private async Task LoadFoodItemsAsync(string? query = null) =>
@@ -34,11 +62,7 @@ public partial class MainPage : ContentPage
     private async void OnEditClicked(object sender, EventArgs e)
     {
         if ((sender as Button)?.CommandParameter is string id)
-        {
-            var entry = await FoodDataService.GetByIdAsync(id);
-            if (entry != null)
-                await Shell.Current.GoToAsync($"{nameof(EditEntryPage)}?id={id}");
-        }
+            await Shell.Current.GoToAsync($"{nameof(EditEntryPage)}?id={id}");
     }
 
     private async void OnDeleteClicked(object sender, EventArgs e)
@@ -50,9 +74,17 @@ public partial class MainPage : ContentPage
             {
                 try
                 {
-                    await FoodDataService.DeleteAsync(id);
-                    await LoadFoodItemsAsync(SearchBar.Text);
-                    SemanticScreenReader.Announce("Item deleted");
+                    bool success = await FoodDataService.DeleteAsync(id);
+                    if (success)
+                    {
+                        await FoodDataService.RefreshCacheAsync();
+                        await LoadFoodItemsAsync(SearchBar.Text);
+                        SemanticScreenReader.Announce("Item deleted");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Delete failed. Please try again.", "OK");
+                    }
                 }
                 catch (Exception ex)
                 {

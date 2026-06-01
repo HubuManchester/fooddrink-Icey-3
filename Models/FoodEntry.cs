@@ -4,7 +4,7 @@ namespace FoodieTracker.Models;
 
 public class FoodEntry
 {
-    [JsonPropertyName("id")]
+    [JsonPropertyName("ID")]
     public string Id { get; set; } = string.Empty;
 
     [JsonPropertyName("name")]

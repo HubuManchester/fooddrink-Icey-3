@@ -2,40 +2,48 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 
-namespace FoodieTrackerNew.Services;
+namespace FoodieTracker.Services;
 
 public static class AccessibilityService
 {
     private const double LargeFontScale = 1.28;
-
-    // 包装类，解决 ConditionalWeakTable 要求 TValue 为引用类型的问题
-    private class FontSizeHolder
-    {
-        public double Value { get; set; }
-    }
-
+    private class FontSizeHolder { public double Value { get; set; } }
     private static readonly ConditionalWeakTable<VisualElement, FontSizeHolder> OriginalFontSizes = new();
 
-    public static bool IsLargeTextEnabled { get; set; }
+    private static bool _isLargeTextEnabled = false;
+    public static bool IsLargeTextEnabled
+    {
+        get => _isLargeTextEnabled;
+        set
+        {
+            if (_isLargeTextEnabled == value) return;
+            _isLargeTextEnabled = value;
+            LargeTextChanged?.Invoke(null, EventArgs.Empty);
+        }
+    }
+
+    public static event EventHandler? LargeTextChanged;
 
     public static void ApplyFontScale(Element root)
     {
         if (root is not IVisualTreeElement visualRoot) return;
-        ApplyToVisualElement(visualRoot);
-
+        ApplyToVisualTree(visualRoot);
         foreach (var child in visualRoot.GetVisualChildren())
-        {
-            if (child is Element element)
-                ApplyFontScale(element);
-        }
+            ApplyToVisualTree(child);
     }
 
-    private static void ApplyToVisualElement(IVisualTreeElement element)
+    private static void ApplyToVisualTree(IVisualTreeElement element)
     {
-        if (element is not VisualElement visual) return;
+        if (element is VisualElement visual)
+            ApplyToVisualElement(visual);
 
+        foreach (var child in element.GetVisualChildren())
+            ApplyToVisualTree(child);
+    }
+
+    private static void ApplyToVisualElement(VisualElement visual)
+    {
         double scale = IsLargeTextEnabled ? LargeFontScale : 1.0;
-
         switch (visual)
         {
             case Label label:

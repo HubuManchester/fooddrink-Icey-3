@@ -13,14 +13,31 @@ namespace FoodieTracker.Views;
 
 public partial class HardwareDemoPage : ContentPage
 {
+    private int feedbackTestCount;
+
     public HardwareDemoPage()
     {
         InitializeComponent();
         ShakeDetector.ShakeDetected += OnShakeDetected;
+        AccessibilityService.LargeTextChanged += OnLargeTextChanged;
     }
 
-    protected override void OnAppearing() => ShakeDetector.Start();
-    protected override void OnDisappearing() => ShakeDetector.Stop();
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        ShakeDetector.Start();
+        AccessibilityService.ApplyFontScale(this);
+    }
+
+    protected override void OnDisappearing()
+    {
+        ShakeDetector.Stop();
+        SpeechService.Stop();
+        base.OnDisappearing();
+    }
+
+    private void OnLargeTextChanged(object? sender, EventArgs e) =>
+        AccessibilityService.ApplyFontScale(this);
 
     private async void OnPhotoClicked(object sender, EventArgs e)
     {

@@ -3,20 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodieTracker.Views.SettingsPage"
              Title="Settings">
-    <VerticalStackLayout Padding="20" Spacing="20">
-        <Label Text="Accessibility &amp; Appearance" FontSize="22" FontAttributes="Bold"/>
-        <Picker x:Name="ThemePicker" Title="App Theme" SelectedIndexChanged="OnThemeChanged">
-            <Picker.Items>
-                <x:String>System default</x:String>
-                <x:String>Light</x:String>
-                <x:String>Dark</x:String>
-            </Picker.Items>
-        </Picker>
-        <Grid ColumnDefinitions="*,Auto">
-            <Label Text="Large Text Mode" VerticalOptions="Center"/>
-            <Switch x:Name="LargeTextSwitch" Toggled="OnLargeTextToggled"/>
-        </Grid>
-        <Label x:Name="PreviewLabel" Text="This text will scale when large mode is on." FontSize="16"/>
-        <Label x:Name="StatusLabel" TextColor="Gray"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Accessibility &amp; Appearance" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   TextColor="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}"/>
+
+            <!-- Theme picker -->
+            <Picker x:Name="ThemePicker" Title="App Theme" SelectedIndexChanged="OnThemeChanged">
+                <Picker.Items>
+                    <x:String>System default</x:String>
+                    <x:String>Light theme</x:String>
+                    <x:String>Dark theme</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- Large text switch -->
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Large text mode" 
+                           FontSize="17" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#2F7A4F, Dark=#8CE6A1}"/>
+                    <Label Text="Increase text size for accessibility demonstration." 
+                           FontSize="13" 
+                           TextColor="{AppThemeBinding Light=#8B6D55, Dark=#D8C4AC}"/>
+                </VerticalStackLayout>
+                <Switch x:Name="LargeTextSwitch" 
+                        Grid.Column="1" 
+                        Toggled="OnLargeTextToggled"
+                        SemanticProperties.Hint="Increase text size across the current session"/>
+            </Grid>
+
+            <!-- Large text preview panel -->
+            <Border StrokeThickness="0"
+                    BackgroundColor="{AppThemeBinding Light=#FFF0C9, Dark=#312316}"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label x:Name="LargeTextPreviewTitle"
+                           Text="Large text preview"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#A95517, Dark=#FFD18E}" />
+                    <Label x:Name="LargeTextPreviewBody"
+                           Text="When enabled, this text and the rest of the page become visibly larger."
+                           FontSize="15"
+                           TextColor="{AppThemeBinding Light=#6E5A47, Dark=#D8C4AC}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Status label -->
+            <Label x:Name="SettingsStatusLabel" 
+                   Text="Settings ready."
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

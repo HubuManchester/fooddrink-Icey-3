@@ -5,7 +5,9 @@
              Title="New Entry">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="16">
-            <Entry x:Name="NameEntry" Placeholder="Name *" />
+
+            <Label Text="Basic Information" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}"/>
+            <Entry x:Name="NameEntry" Placeholder="Food/Drink Name *" />
             <Picker x:Name="CategoryPicker" Title="Category *">
                 <Picker.Items>
                     <x:String>Breakfast</x:String>
@@ -15,16 +17,28 @@
                     <x:String>Drink</x:String>
                 </Picker.Items>
             </Picker>
-            <Editor x:Name="DescEditor" Placeholder="Description" AutoSize="TextChanges" HeightRequest="80"/>
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                <Entry x:Name="CalEntry" Placeholder="Calories *" Keyboard="Numeric"/>
-                <Entry x:Name="ProteinEntry" Placeholder="Protein (g)" Keyboard="Numeric"/>
-                <Entry x:Name="CarbsEntry" Placeholder="Carbs (g)" Keyboard="Numeric"/>
-                <Entry x:Name="FatEntry" Placeholder="Fat (g)" Keyboard="Numeric"/>
+            <Editor x:Name="DescEditor" Placeholder="Description (ingredients, flavor, etc.)" AutoSize="TextChanges" HeightRequest="80"/>
+
+            <Label Text="Nutrition (per serving)" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2F7A4F, Dark=#8CE6A1}" Margin="0,8,0,0"/>
+
+            <!-- 第一行：热量和蛋白质 -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Entry x:Name="CalEntry" Placeholder="Calories *" Keyboard="Numeric" />
+                <Entry x:Name="ProteinEntry" Grid.Column="1" Placeholder="Protein (g)" Keyboard="Numeric" />
             </Grid>
-            <Entry x:Name="AllergyEntry" Placeholder="Allergy info"/>
-            <Label x:Name="ErrorLabel" IsVisible="False" TextColor="Red" FontAttributes="Bold"/>
-            <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green" TextColor="White"/>
+
+            <!-- 第二行：碳水和脂肪 -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Entry x:Name="CarbsEntry" Placeholder="Carbs (g)" Keyboard="Numeric" />
+                <Entry x:Name="FatEntry" Grid.Column="1" Placeholder="Fat (g)" Keyboard="Numeric" />
+            </Grid>
+
+            <Label Text="Dietary Information" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#F29B38, Dark=#FFD18E}" Margin="0,8,0,0"/>
+            <Entry x:Name="AllergyEntry" Placeholder="Allergy info (e.g., contains nuts, dairy-free)" />
+
+            <Label x:Name="ErrorLabel" IsVisible="False" TextColor="Red" FontAttributes="Bold" />
+            <Button Text="Save Entry" Clicked="OnSaveClicked" BackgroundColor="#2F7A4F" TextColor="White" FontAttributes="Bold" HeightRequest="50"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
