@@ -24,21 +24,16 @@ public partial class MainPage : ContentPage
         AccessibilityService.ApplyFontScale(this);
     }
 
-    // 下拉刷新事件处理
     private async void OnRefreshViewRefreshing(object? sender, EventArgs e)
     {
         try
         {
-            // 强制从服务器获取最新数据，更新缓存
             await FoodDataService.RefreshCacheAsync();
-            // 重新加载列表
             await LoadFoodItemsAsync(SearchBar.Text);
-            // 可选：显示提示信息
             SemanticScreenReader.Announce("List refreshed with latest data");
         }
         finally
         {
-            // 结束刷新动画
             if (sender is RefreshView refreshView)
                 refreshView.IsRefreshing = false;
         }

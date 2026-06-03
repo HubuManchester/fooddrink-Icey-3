@@ -21,13 +21,11 @@
 
             <Label Text="Nutrition (per serving)" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2F7A4F, Dark=#8CE6A1}" Margin="0,8,0,0"/>
 
-            <!-- 第一行：热量和蛋白质 -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
                 <Entry x:Name="CalEntry" Placeholder="Calories *" Keyboard="Numeric" />
                 <Entry x:Name="ProteinEntry" Grid.Column="1" Placeholder="Protein (g)" Keyboard="Numeric" />
             </Grid>
 
-            <!-- 第二行：碳水和脂肪 -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
                 <Entry x:Name="CarbsEntry" Placeholder="Carbs (g)" Keyboard="Numeric" />
                 <Entry x:Name="FatEntry" Grid.Column="1" Placeholder="Fat (g)" Keyboard="Numeric" />

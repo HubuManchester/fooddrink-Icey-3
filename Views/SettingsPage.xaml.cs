@@ -9,22 +9,20 @@ public partial class SettingsPage : ContentPage
         InitializeComponent();
         ThemePicker.SelectedIndex = 0;
         LargeTextSwitch.IsToggled = AccessibilityService.IsLargeTextEnabled;
-        // 订阅全局字体改变事件，以便当其他页面（如主页）改变字体时本页也能刷新
         AccessibilityService.LargeTextChanged += OnLargeTextChanged;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        // 确保每次显示时应用当前的字体缩放
         AccessibilityService.ApplyFontScale(this);
+        UpdateStatusLabel();
     }
 
     private void OnLargeTextChanged(object? sender, EventArgs e)
     {
-        // 当全局字体设置改变时，重新应用缩放
         AccessibilityService.ApplyFontScale(this);
-        UpdatePreviewText();
+        UpdateStatusLabel();
     }
 
     private void OnThemeChanged(object sender, EventArgs e)
@@ -35,28 +33,23 @@ public partial class SettingsPage : ContentPage
             2 => AppTheme.Dark,
             _ => AppTheme.Unspecified
         };
+        SettingsStatusLabel.Text = $"✅ Theme set to {ThemePicker.SelectedItem}";
+        SemanticScreenReader.Announce(SettingsStatusLabel.Text);
     }
 
     private void OnLargeTextToggled(object sender, ToggledEventArgs e)
     {
-        // 设置全局静态属性，这会触发 LargeTextChanged 事件
         AccessibilityService.IsLargeTextEnabled = e.Value;
-        UpdatePreviewText();
+        UpdateStatusLabel();
     }
 
-    private void UpdatePreviewText()
+    private void UpdateStatusLabel()
     {
-        if (LargeTextPreviewTitle != null && LargeTextPreviewBody != null && SettingsStatusLabel != null)
+        if (SettingsStatusLabel != null)
         {
-            LargeTextPreviewTitle.Text = AccessibilityService.IsLargeTextEnabled
-                ? "Large text preview: enlarged"
-                : "Large text preview";
-            LargeTextPreviewBody.Text = AccessibilityService.IsLargeTextEnabled
-                ? "Text is now noticeably larger. The food and hardware pages will use the same setting."
-                : "Turn on the switch to enlarge this preview and other page text.";
             SettingsStatusLabel.Text = AccessibilityService.IsLargeTextEnabled
-                ? "Large text ON"
-                : "Large text OFF";
+                ? "🔠 Large text ON"
+                : "🔠 Large text OFF";
             SemanticScreenReader.Announce(SettingsStatusLabel.Text);
         }
     }

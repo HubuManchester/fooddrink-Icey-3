@@ -4,63 +4,74 @@
              x:Class="FoodieTracker.Views.SettingsPage"
              Title="Settings">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="16">
-            <Label Text="Accessibility &amp; Appearance" 
-                   FontSize="22" 
-                   FontAttributes="Bold" 
-                   TextColor="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}"/>
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- Theme picker -->
-            <Picker x:Name="ThemePicker" Title="App Theme" SelectedIndexChanged="OnThemeChanged">
-                <Picker.Items>
-                    <x:String>System default</x:String>
-                    <x:String>Light theme</x:String>
-                    <x:String>Dark theme</x:String>
-                </Picker.Items>
-            </Picker>
+            
+            <Label Text="⚙️ Settings"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}"
+                   SemanticProperties.HeadingLevel="Level1"
+                   Margin="0,0,0,8"/>
 
-            <!-- Large text switch -->
-            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
-                <VerticalStackLayout Spacing="4">
-                    <Label Text="Large text mode" 
-                           FontSize="17" 
-                           FontAttributes="Bold" 
-                           TextColor="{AppThemeBinding Light=#2F7A4F, Dark=#8CE6A1}"/>
-                    <Label Text="Increase text size for accessibility demonstration." 
-                           FontSize="13" 
-                           TextColor="{AppThemeBinding Light=#8B6D55, Dark=#D8C4AC}"/>
-                </VerticalStackLayout>
-                <Switch x:Name="LargeTextSwitch" 
-                        Grid.Column="1" 
-                        Toggled="OnLargeTextToggled"
-                        SemanticProperties.Hint="Increase text size across the current session"/>
-            </Grid>
-
-            <!-- Large text preview panel -->
-            <Border StrokeThickness="0"
-                    BackgroundColor="{AppThemeBinding Light=#FFF0C9, Dark=#312316}"
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
                     Padding="16">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="8" />
+                    <RoundRectangle CornerRadius="12" />
                 </Border.StrokeShape>
-                <VerticalStackLayout Spacing="8">
-                    <Label x:Name="LargeTextPreviewTitle"
-                           Text="Large text preview"
-                           FontSize="20"
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="🎨 Theme"
+                           FontSize="18"
                            FontAttributes="Bold"
-                           TextColor="{AppThemeBinding Light=#A95517, Dark=#FFD18E}" />
-                    <Label x:Name="LargeTextPreviewBody"
-                           Text="When enabled, this text and the rest of the page become visibly larger."
-                           FontSize="15"
-                           TextColor="{AppThemeBinding Light=#6E5A47, Dark=#D8C4AC}" />
+                           TextColor="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}"/>
+                    <Picker x:Name="ThemePicker" 
+                            Title="Select theme" 
+                            SelectedIndexChanged="OnThemeChanged"
+                            BackgroundColor="{AppThemeBinding Light=#FFF9EF, Dark=#211A14}">
+                        <Picker.Items>
+                            <x:String>🌓 System default</x:String>
+                            <x:String>☀️ Light theme</x:String>
+                            <x:String>🌙 Dark theme</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Status label -->
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="🔠 Large text mode"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#2F7A4F, Dark=#8CE6A1}"/>
+                        <Label Text="Increase text size for better readability"
+                               FontSize="13"
+                               TextColor="{AppThemeBinding Light=#8B6D55, Dark=#D8C4AC}"/>
+                    </VerticalStackLayout>
+                    <Switch x:Name="LargeTextSwitch" 
+                            Grid.Column="1" 
+                            VerticalOptions="Center"
+                            Toggled="OnLargeTextToggled"
+                            SemanticProperties.Hint="Increase text size across the whole app"/>
+                </Grid>
+            </Border>
+
             <Label x:Name="SettingsStatusLabel" 
-                   Text="Settings ready."
+                   Text="✅ Settings ready"
+                   FontSize="14"
                    FontAttributes="Bold"
-                   TextColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}" />
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}"
+                   Margin="0,8,0,0"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

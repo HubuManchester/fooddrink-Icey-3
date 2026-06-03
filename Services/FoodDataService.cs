@@ -92,14 +92,14 @@ public static class FoodDataService
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
                 return await _httpClient.GetFromJsonAsync<FoodEntry>($"/{id}", _jsonOptions);
         }
-        catch { /* 忽略 */ }
+        catch {}
         return null;
     }
 
     public static async Task<FoodEntry?> AddAsync(FoodEntry entry)
     {
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
-            throw new Exception("无网络连接，无法新增");
+            throw new Exception("No network connection, unable to add");
 
         await EnsureCacheAsync();
 
@@ -110,7 +110,7 @@ public static class FoodDataService
         {
             _cachedItems!.Add(created);
             _cachedItems = _cachedItems.OrderBy(x => x.Name).ToList();
-            _lastCacheTime = DateTime.UtcNow; // 可选：刷新缓存时间
+            _lastCacheTime = DateTime.UtcNow;
         }
         return created;
     }
@@ -118,7 +118,7 @@ public static class FoodDataService
     public static async Task<FoodEntry?> UpdateAsync(FoodEntry entry)
     {
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
-            throw new Exception("无网络连接，无法更新");
+            throw new Exception("No network connection, unable to update");
 
         var response = await _httpClient.PutAsJsonAsync($"/{entry.Id}", entry, _jsonOptions);
         response.EnsureSuccessStatusCode();

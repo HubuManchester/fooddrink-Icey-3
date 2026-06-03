@@ -86,11 +86,11 @@ public partial class HardwareDemoPage : ContentPage
         {
             var random = all.OrderBy(x => Guid.NewGuid()).First();
             ShakeResultLabel.Text = $"🥗 Shake recommendation: {random.Name} – {random.CaloriesLabel}";
-            await SpeechService.SpeakAsync($"Try {random.Name}, it has {random.CaloriesLabel}");
         }
         else
+        {
             ShakeResultLabel.Text = "No entries yet. Add some foods first!";
-        SetStatus("Shake detected!");
+        }
     }
 
     private void SetStatus(string msg) { StatusLabel.Text = msg; SemanticScreenReader.Announce(msg); }
